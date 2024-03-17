@@ -8,5 +8,12 @@ def index(request):
 def generate_question(request):
     response = requests.get('https://opentdb.com/api.php?amount=1')
     data = response.json()
-    question = data['results'][0]['question']
-    return render(request, 'puzzler/puzzle_app/templates/init.html', {'question': question})
+
+    if 'results' in data and data['results']:
+        question = data['results'][0].get('question', 'Question not available')
+    else:
+        question = 'Question not available'
+    
+    dir = 'init.html'
+
+    return render(request, dir, {'question': question})
