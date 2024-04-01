@@ -6,6 +6,18 @@
 <body>
     <h1>Random Question</h1>
     <p>{{ question }}</p>
-    <a href="{% url 'generate_question' %}">Generate Another Question</a>
+    <p></p>
+    <p>Answer Key:</p>
+    <p>{{ answer1 }}</p>
+    <p>{{ answer2 }}</p>
+    <p>{{ answer3 }}</p>
+    <p>{{ answer4 }}</p>
+    <form action="/puzzle_app/answer/" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="correctanswer" value="{{ correctanswer }}">
+        <label for="user_answer">Answer:</label><br>
+        <input type="text" id="user_answer" name="user_answer"><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
