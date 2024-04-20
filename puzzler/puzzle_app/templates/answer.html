@@ -1,6 +1,9 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
     <title>Answer</title>
 </head>
 <body>
@@ -8,5 +11,10 @@
     <p>Correct Answer: {{ correct_answer }}</p>
     <p>Your Answer: {{ user_answer }}</p>
     <p>{{ is_correct }}</p>
+    {% for answer in question.answer_set.all %}
+        <input type="radio" name="answer" value="{{ answer.id }}" id="answer{{ forloop.counter }}">
+        <label for="answer{{ forloop.counter }}">{{ answer.text }}</label>
+    {% endfor %}
+    <a href="/puzzle_app/question/">New Question!</a>
 </body>
 </html>

@@ -54,3 +54,18 @@ def answer(request):
         return render(request, 'answer.html', {'correct_answer': correct_answer, 'user_answer': user_answer, 'is_correct': is_correct})
     else:
         return HttpResponse("Method Not Allowed", status=405)
+    
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from .forms import ProfileForm
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=request.user.profile)
+    return render(request, 'profile/edit.html', {'form': form})

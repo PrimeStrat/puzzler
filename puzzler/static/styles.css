@@ -1,0 +1,38 @@
+/* Global properties
+======================================================== */
+body {
+    background:#000000;
+    font-family:Tahoma, Arial, Helvetica;
+    font-size:14px;
+    color:white;
+    font-weight:bold;
+}
+
+p {
+    background: grey;
+}
+
+a {
+    color: #00aaff;
+}
+
+a:hover {
+    color: #ff7b29;
+}
+
+h1 {
+    font-size: 38px;
+    font-weight: bold;
+    Color: yellow;
+    margin-bottom: 6px;
+}
+
+div {
+    background-color: white;
+    border: 6px solid #949599;
+    height: 75px;
+    margin: 20px;
+    padding: 20px;
+    width: 400px;
+}
+    
